@@ -1,0 +1,166 @@
+[gd_scene load_steps=22 format=3 uid="uid://dmn4kachs81kf"]
+
+[ext_resource type="Texture2D" uid="uid://cm4owxpmsllcc" path="res://Sprites/floss-idle-with-sail-transp.png" id="1_1w1q6"]
+[ext_resource type="Script" uid="uid://cv7bk4jjfmonj" path="res://Scenes/boat.gd" id="1_6qyon"]
+[ext_resource type="PackedScene" uid="uid://crcjomqrtneu5" path="res://Scenes/Player.tscn" id="2_1w1q6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdayy"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(0, 0, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nfiu"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(163, 0, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4po7"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(326, 0, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48and"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(489, 0, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v5je"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(0, 448, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qutmk"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(163, 448, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du40w"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(326, 448, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omojh"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(489, 448, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoopj"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(0, 224, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u35dc"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(163, 224, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlfiv"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(326, 224, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgqh3"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(489, 224, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dbbu"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(0, 672, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv4wf"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(163, 672, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h12cx"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(326, 672, 163, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsh4k"]
+atlas = ExtResource("1_1w1q6")
+region = Rect2(489, 672, 163, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vpub5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdayy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nfiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4po7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48and")
+}],
+"loop": true,
+"name": &"down_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v5je")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qutmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du40w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omojh")
+}],
+"loop": true,
+"name": &"left_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoopj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u35dc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlfiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgqh3")
+}],
+"loop": true,
+"name": &"right_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dbbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv4wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h12cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsh4k")
+}],
+"loop": true,
+"name": &"up_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdayy"]
+
+[node name="Base" type="Node"]
+
+[node name="Boat" type="StaticBody2D" parent="."]
+collision_mask = 0
+script = ExtResource("1_6qyon")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boat"]
+position = Vector2(576, 337)
+sprite_frames = SubResource("SpriteFrames_vpub5")
+animation = &"up_idle"
+frame_progress = 0.728674
+
+[node name="MastArea" type="Area2D" parent="Boat"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat/MastArea"]
+position = Vector2(569, 282)
+shape = SubResource("CircleShape2D_jdayy")
+
+[node name="Player" parent="." instance=ExtResource("2_1w1q6")]
+position = Vector2(555, 318)
+collision_layer = 2
+
+[connection signal="body_entered" from="Boat/MastArea" to="Boat" method="_on_mast_area_body_entered"]

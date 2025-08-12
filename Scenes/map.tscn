@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvl2fd6mge7jm"]
+
+[ext_resource type="PackedScene" uid="uid://d3yep5ili8juq" path="res://Scenes/water.tscn" id="1_26yhd"]
+[ext_resource type="PackedScene" uid="uid://vtsth27cy0kc" path="res://models/Sail Boat.glb" id="2_p3ir5"]
+
+[node name="Map" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.354487, 0.935061, 0, -0.935061, 0.354487, 0.356875, 0.982163, 1.01399)
+
+[node name="Water" parent="." instance=ExtResource("1_26yhd")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0411153, 0)
+
+[node name="Root Scene" parent="Node3D" instance=ExtResource("2_p3ir5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
