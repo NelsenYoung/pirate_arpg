@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvt1f54u5l427"]
+
+[ext_resource type="PackedScene" uid="uid://vtsth27cy0kc" path="res://models/Sail Boat.glb" id="1_f2t7t"]
+[ext_resource type="Script" uid="uid://cvngfs5n25eph" path="res://Scenes/buoyancy_script.gd" id="2_8y1pi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8y1pi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwwd3"]
+
+[node name="PlayerBoat" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_8y1pi")
+script = ExtResource("2_8y1pi")
+float_force = 7.0
+water_angular_drag = 0.1
+
+[node name="SailBoatModel" parent="RigidBody3D" instance=ExtResource("1_f2t7t")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.03, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.175, 0)
+shape = SubResource("BoxShape3D_lwwd3")
+
+[node name="ProbeContainer" type="Node3D" parent="RigidBody3D"]
+
+[node name="Probe" type="Marker3D" parent="RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.115)
+
+[node name="Probe2" type="Marker3D" parent="RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0.115)
+
+[node name="Probe3" type="Marker3D" parent="RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, -0.25)
+
+[node name="Probe4" type="Marker3D" parent="RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, -0.25)

@@ -1,18 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvl2fd6mge7jm"]
+[gd_scene load_steps=7 format=3 uid="uid://bvl2fd6mge7jm"]
 
 [ext_resource type="PackedScene" uid="uid://d3yep5ili8juq" path="res://Scenes/water.tscn" id="1_26yhd"]
-[ext_resource type="PackedScene" uid="uid://vtsth27cy0kc" path="res://models/Sail Boat.glb" id="2_p3ir5"]
+[ext_resource type="Script" uid="uid://cfbdx3vtphr1h" path="res://Scenes/map.gd" id="1_p3ir5"]
+[ext_resource type="PackedScene" uid="uid://dvt1f54u5l427" path="res://Scenes/player_boat.tscn" id="3_p3ir5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p3ir5"]
+sky_top_color = Color(0.243829, 0.403199, 0.875712, 1)
+sky_horizon_color = Color(0.651355, 0.657911, 0.642516, 1)
+
+[sub_resource type="Sky" id="Sky_myvm1"]
+sky_material = SubResource("ProceduralSkyMaterial_p3ir5")
+
+[sub_resource type="Environment" id="Environment_q0mm3"]
+background_mode = 2
+sky = SubResource("Sky_myvm1")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
 
 [node name="Map" type="Node3D"]
+script = ExtResource("1_p3ir5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q0mm3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.354487, 0.935061, 0, -0.935061, 0.354487, 0.356875, 0.982163, 1.01399)
+transform = Transform3D(1, 0, 0, 0, 0.58442, 0.811452, 0, -0.811452, 0.58442, 0.356875, 0.982163, 1.01399)
+
+[node name="PlayerBoat" parent="." instance=ExtResource("3_p3ir5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 
 [node name="Water" parent="." instance=ExtResource("1_26yhd")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0411153, 0)
-
-[node name="Root Scene" parent="Node3D" instance=ExtResource("2_p3ir5")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
